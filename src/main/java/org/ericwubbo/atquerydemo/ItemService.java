@@ -10,7 +10,7 @@ import java.util.Optional;
 public class ItemService {
     private final ItemRepository itemRepository;
 
-    public Iterable<Item> findAll() {
+    public Iterable<Item> findAllPurchasable() {
         return itemRepository.findByDeleted(false);
     }
 

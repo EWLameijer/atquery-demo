@@ -11,7 +11,7 @@ public class ItemController {
 
     @GetMapping
     public Iterable<Item> getAll() {
-        return itemService.findAll();
+        return itemService.findAllPurchasable();
     }
 
     @DeleteMapping("{id}")
