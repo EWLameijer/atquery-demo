@@ -21,7 +21,8 @@ public class ItemService {
 
     public void deleteById(long id) {
         Optional<Item> possibleItem = itemRepository.findById(id);
-        if (possibleItem.isEmpty() || possibleItem.get().isDeleted()) throw new IllegalArgumentException("Item does not exist");
+        if (possibleItem.isEmpty() || possibleItem.get().isDeleted())
+            throw new IllegalArgumentException("Item does not exist");
         Item item = possibleItem.get();
         item.setDeleted(true);
         itemRepository.save(item);
