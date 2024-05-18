@@ -2,7 +2,6 @@ package org.ericwubbo.atquerydemo;
 
 import jakarta.annotation.Nonnull;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.lang.NonNullApi;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +10,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Override
     @Nonnull
     default List<Item> findAll() {
-        return findByDeleted(false);
+        return findByDeletedIsFalse();
     }
 
     @Override
@@ -23,5 +22,5 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
         save(item);
     }
 
-    List<Item> findByDeleted(boolean b);
+    List<Item> findByDeletedIsFalse();
 }
