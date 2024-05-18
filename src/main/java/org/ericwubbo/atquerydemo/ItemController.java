@@ -13,7 +13,7 @@ public class ItemController {
 
     @GetMapping
     public Iterable<Item> getAll() {
-        return itemRepository.findAll();
+        return itemRepository.findAllPurchasable();
     }
 
     @DeleteMapping("{id}")
