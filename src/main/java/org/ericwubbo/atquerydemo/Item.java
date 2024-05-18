@@ -22,7 +22,7 @@ public class Item {
 
     private BigDecimal price;
 
-    private boolean hasBeenDeleted = false;
+    private boolean deleted = false;
 
     public Item(String name, String priceAsString) {
         this.name = name;

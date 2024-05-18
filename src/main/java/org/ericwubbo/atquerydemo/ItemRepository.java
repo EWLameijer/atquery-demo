@@ -8,11 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
-
     @Override
     @Nonnull
     default List<Item> findAll() {
-        return findByHasBeenDeleted(false);
+        return findByDeleted(false);
     }
 
     @Override
@@ -20,9 +19,9 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
         Optional<Item> possibleItem = findById(id);
         if (possibleItem.isEmpty()) throw new IllegalArgumentException("Item with id " + id + " does not exist!");
         Item item = possibleItem.get();
-        item.setHasBeenDeleted(true);
+        item.setDeleted(true);
         save(item);
     }
 
-    List<Item> findByHasBeenDeleted(boolean b);
+    List<Item> findByDeleted(boolean b);
 }
